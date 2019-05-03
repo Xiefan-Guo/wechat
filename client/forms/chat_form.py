@@ -40,8 +40,8 @@ class ChatForm(client.tk.Frame):
         self.user_listbox.delete(0, END)
         self.user_list.sort(key=lambda x: x[2])
         for user in self.user_list:
-            self.user_listbox.insert(0, user[1] + ("(在线)" if user[2] else "(离线)"))
-            self.user_listbox.itemconfig(0, {'fg': ("green" if user[2] else "#999")})
+            self.user_listbox.insert(0, user[1] + ("(ON-line)" if user[2] else "(OFF-line)"))
+            self.user_listbox.itemconfig(0, {'fg': ("green" if user[2] else "red")})
     #消息处理
     def digest_message(self, data):
         time = datetime.datetime.fromtimestamp(
@@ -69,7 +69,8 @@ class ChatForm(client.tk.Frame):
         super().__init__(master)
         self.master = master
         self.target = target
-        self.user_listbox = client.tk.Listbox(self, bg='#EEE')
+        self.user_listbox = client.tk.Listbox(self, bg='blue')
+        self.master.iconbitmap('F:\pycharm_python\wechat\client\image\\wechat.ico')
         client.add_listener(self.socket_listener)
         client.memory.unread_message_count[self.target['type']][self.target['id']] = 0
         client.memory.contact_window[0].refresh_contacts()
@@ -84,9 +85,9 @@ class ChatForm(client.tk.Frame):
         self.input_frame = client.tk.Frame(self.right_frame, bg='white')
         self.input_textbox = ScrolledText(self.right_frame, height=10)
         self.input_textbox.bind("<Control-Return>", self.send_message)
-        self.send_btn = client.tk.Button(self.input_frame, text='发送消息(Ctrl+Enter)', command=self.send_message)
+        self.send_btn = client.tk.Button(self.input_frame, text='Enter', bg='green',  width=10, height=1,command=self.send_message)
         self.send_btn.pack(side=RIGHT, expand=False)
-        self.image_btn = client.tk.Button(self.input_frame, text='发送图片', command=self.send_image)
+        self.image_btn = client.tk.Button(self.input_frame, text='发送图片',bg='green',  width=10, height=1,command=self.send_image)
         self.image_btn.pack(side=LEFT, expand=False)
         self.chat_box = ScrolledText(self.right_frame, bg='white')
         self.input_frame.pack(side=BOTTOM, fill=X, expand=False)

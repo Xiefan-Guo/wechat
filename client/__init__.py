@@ -8,6 +8,8 @@ import sys
 from pprint import pprint
 import traceback
 import client.memory
+from PIL import ImageTk, Image
+
 
 
 # 消息处理 0 - 文字消息 1 - 图片消息
@@ -134,6 +136,8 @@ def remove_message_listener(func):
 
 def run():
     root = tk.Tk()
+    root.iconbitmap('F:\pycharm_python\wechat\client\image\\wechat.ico')
+    root.title('wechat')
     client.memory.tk_root = root
     try:
         client.memory.sc = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -148,6 +152,7 @@ def run():
     login = tk.Toplevel()
     LoginForm(master=login)
     root.withdraw()
+
     root.mainloop()
     try:
         root.destroy()

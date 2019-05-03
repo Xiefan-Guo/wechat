@@ -2,9 +2,11 @@ import util.message
 from client.forms.register_form import RegisterForm
 from client.forms.contacts_form import ContactsForm
 from tkinter import *
+import tkinter
 import client
 from tkinter import Toplevel
 from util import send_message as sendMessage
+from PIL import ImageTk, Image
 
 
 class LoginForm(client.tk.Frame):
@@ -33,7 +35,11 @@ class LoginForm(client.tk.Frame):
         super().__init__(master)
         self.master = master
         master.resizable(width=False, height=False)
-        master.geometry('300x100')
+
+        self.master.geometry('300x120')
+
+        self.master.iconbitmap('F:\pycharm_python\wechat\client\image\\wechat.ico')
+
         self.label_1 = Label(self, text="用户名")
         self.label_2 = Label(self, text="密码")
         self.username = Entry(self)
@@ -44,12 +50,14 @@ class LoginForm(client.tk.Frame):
         self.password.grid(row=1, column=1, pady=(0, 6))
         self.buttonframe = Frame(self)
         self.buttonframe.grid(row=2, column=0, columnspan=2, pady=(4, 6))
-        self.logbtn = Button(self.buttonframe, text="登入", command=self.do_login)
+        self.logbtn = Button(self.buttonframe, text="登入", bg='green', width=5, height=1, command=self.do_login)
         self.logbtn.grid(row=0, column=0)
-        self.registerbtn = Button(self.buttonframe, text="注册", command=self.show_register)
+        self.registerbtn = Button(self.buttonframe, text="注册", width=5, height=1,command=self.show_register)
         self.registerbtn.grid(row=0, column=1)
+
         self.pack()
-        self.master.title("聊天室")
+        self.master.title("wechat")
+
         self.sc = client.memory.sc
         # self.sc.send(MessageType.client_echo, 0)
         client.add_listener(self.socket_listener)

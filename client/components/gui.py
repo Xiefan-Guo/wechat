@@ -7,6 +7,8 @@ class Chat_record(Frame):
         def handle_on_click(e):
             e.widget = self
             onclick(e)
+
+        self.config(bg='red')
         Frame.config(self, background='white', borderwidth=2, relief=GROOVE)
         self.title_frame = Frame(self, bg='white')
         self.title_frame.pack(side=TOP, fill=X, expand=True, anchor=W, pady=(1, 1), padx=3)
@@ -37,7 +39,7 @@ class Chat_member(Frame):
             e.widget = self
             onclick(e)
         Frame.config(self, background='white', borderwidth=2, relief=GROOVE)
-        self.title_frame = Frame(self, bg='white')
+        self.title_frame = Frame(self)
         self.title_frame.pack(side=TOP, fill=X, expand=True, anchor=W, pady=(1, 1), padx=3)
         self.title = Label(self.title_frame, text="Title", bg='white')
         self.title.pack(side=LEFT, fill=None, anchor=W)
@@ -71,5 +73,4 @@ class Chat_main(Frame):
             if interior.winfo_reqwidth() != canvas.winfo_width():
                 canvas.itemconfigure(interior_id, width=canvas.winfo_width())
         canvas.bind('<Configure>', _configure_canvas)
-
         return

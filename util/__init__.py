@@ -2,6 +2,7 @@ import json,struct
 from hashlib import md5 as _md5
 from util.message import serialize_message
 
+
 with open('config.json') as config_file:
     config = json.load(config_file)
 

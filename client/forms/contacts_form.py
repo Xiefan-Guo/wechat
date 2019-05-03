@@ -159,13 +159,14 @@ class ContactsForm(tk.Frame):
         screen_height = client.memory.tk_root.winfo_screenheight()
         x = screen_width - 300
         y = (screen_height / 2)-300
-        master.geometry('%dx%d+%d+%d' % (260, 600, x, y))
+        master.geometry('%dx%d+%d+%d' % (600, 400, x, y))
+        self.master.iconbitmap('F:\pycharm_python\wechat\client\image\\wechat.ico')
         self.scroll = Chat_main(self)
         self.scroll.pack(fill=BOTH, expand=True)
         self.pack(side=TOP, fill=BOTH, expand=True)
         self.button_frame = Frame(self)
         self.contact_box = Button(self.button_frame, text="聊天记录", command=self.refresh_contacts)
-        self.contact_box.pack(side=LEFT, expand=True, fill=X)
+        self.contact_box.pack(side='left', expand=True, fill=X)
         self.contact_list = Button(self.button_frame, text="通讯录", command=self.on_contact_list)
         self.contact_list.pack(side=LEFT, expand=True, fill=X)
         self.add_friend = Button(self.button_frame, text="添加好友", command=self.on_add_friend)

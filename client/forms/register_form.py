@@ -45,7 +45,8 @@ class RegisterForm(tk.Frame):
         self.master = master
         self.sc = client.memory.sc
         master.resizable(width=False, height=False)
-        master.geometry('190x140')
+        master.geometry('260x160')
+        self.master.iconbitmap('F:\pycharm_python\wechat\client\image\\wechat.ico')
         self.master.title("注册账户")
         self.label_1 = Label(self, text="用户名")
         self.label_2 = Label(self, text="密码")
@@ -63,7 +64,7 @@ class RegisterForm(tk.Frame):
         self.password.grid(row=1, column=1, pady=(0, 6))
         self.password_confirmation.grid(row=2, column=1, pady=(0, 6))
         self.nickname.grid(row=3, column=1, pady=(0, 6))
-        self.regbtn = Button(self, text="注册", command=self.do_register)
+        self.regbtn = Button(self, text="注册", bg='green',width=6, height=1, command=self.do_register)
         self.regbtn.grid(row=4, column=0, columnspan=2)
         self.pack()
         self.sc = client.memory.sc
